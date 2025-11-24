@@ -1,8 +1,7 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
-Control {
+Item {
     id: root
 
     property int orientation: Qt.Vertical
@@ -10,15 +9,16 @@ Control {
     property real padding: theme ? theme.padding : 8
     property real borderWidth: theme ? theme.borderWidth : 1
     property color borderColor: theme ? theme.surfaceBorder : "#333"
+    property real radius: theme ? theme.radius : 10
 
-    leftPadding: padding
-    rightPadding: padding
-    topPadding: padding
-    bottomPadding: padding
+    // Expose a default property so modules can provide arbitrary layouts/content.
+    default property alias contentItem: contentHolder.data
 
-    radius: theme ? theme.radius : 10
+    implicitWidth: contentHolder.implicitWidth + padding * 2
+    implicitHeight: contentHolder.implicitHeight + padding * 2
 
-    background: Rectangle {
+    Rectangle {
+        anchors.fill: parent
         radius: root.radius
         border.width: root.borderWidth
         border.color: root.borderColor
@@ -29,8 +29,9 @@ Control {
         }
     }
 
-    // Provide a default content item so modules can override with their own layout.
-    contentItem: Item {
+    Item {
+        id: contentHolder
         anchors.fill: parent
+        anchors.margins: padding
     }
 }
