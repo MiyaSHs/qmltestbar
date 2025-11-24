@@ -16,8 +16,12 @@ Window {
 
     readonly property bool vertical: orientation === Qt.Vertical
 
-    width: vertical ? (themeLoader.theme ? themeLoader.theme.barThickness + (themeLoader.theme.padding * 2) : 72) : Screen.primaryOrientation === Qt.PortraitOrientation ? Screen.width : Screen.width
-    height: vertical ? Screen.height : (themeLoader.theme ? themeLoader.theme.barThickness + (themeLoader.theme.padding * 2) : 72)
+    width: vertical
+           ? (themeLoader.theme ? themeLoader.theme.barThickness + (themeLoader.theme.padding * 2) : 72)
+           : Screen.width
+    height: vertical
+            ? Screen.height
+            : (themeLoader.theme ? themeLoader.theme.barThickness + (themeLoader.theme.padding * 2) : 72)
     x: 0
     y: 0
 

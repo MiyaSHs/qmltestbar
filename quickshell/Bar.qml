@@ -19,16 +19,6 @@ Rectangle {
         GradientStop { position: 1; color: theme ? theme.backgroundEnd : "#2f6bc2" }
     }
 
-    width: orientation === Qt.Vertical ? (theme ? theme.barThickness : 60) : parent ? parent.width : 900
-    height: orientation === Qt.Vertical ? (parent ? parent.height : 900) : (theme ? theme.barThickness : 60)
-
-    anchors {
-        left: orientation === Qt.Vertical ? parent.left : undefined
-        top: parent.top
-        bottom: orientation === Qt.Vertical ? parent.bottom : undefined
-        right: orientation === Qt.Horizontal ? parent.right : undefined
-    }
-
     Item {
         id: content
         anchors.fill: parent
